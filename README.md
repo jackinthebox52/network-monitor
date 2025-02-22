@@ -3,15 +3,6 @@
 A simple bash-based tool to track network usage on cron-capable Unix systems and enforce usage thresholds.
 (Developed and tested solely on Debian)
 
-## Features
-
-- Track data usage on any network interface
-- Set monthly data thresholds
-- Automatically stop WireGuard services when thresholds are exceeded
-- Monthly counter resets
-- Detailed logging
-- Simple command-line interface
-
 ## Installation
 
 ### Quick Installation
@@ -19,11 +10,11 @@ A simple bash-based tool to track network usage on cron-capable Unix systems and
 1. Clone this repository or download the files
 2. Make the installer executable:
    ```bash
-   chmod +x basic-installer.sh
+   chmod +x installer.sh
    ```
 3. Run the installer:
    ```bash
-   sudo ./basic-installer.sh
+   sudo ./installer.sh
    ```
 
 ### Manual Installation
@@ -80,7 +71,7 @@ This sets a 5GB threshold for wg0 (will stop the WireGuard service when exceeded
 
 ### Setting Up Cron Jobs (Optional)
 
-To enable automatic monitoring and monthly resets, create a cron file:
+To enable automatic monitoring and monthly resets, create a cron file (This file is created automatically if you run the installer):
 
 ```bash
 sudo nano /etc/cron.d/network-monitor
@@ -88,8 +79,6 @@ sudo nano /etc/cron.d/network-monitor
 
 Example content:
 ```
-# Run network monitor checks every hour
-0 * * * * root /bin/bash /usr/local/bin/network-monitor.sh check all > /dev/null 2>&1
 # Check thresholds every hour
 15 * * * * root /bin/bash /usr/local/bin/network-monitor.sh check-thresholds > /dev/null 2>&1
 # Reset counters on the 1st of each month

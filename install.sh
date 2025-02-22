@@ -83,8 +83,6 @@ echo "3. Set up cron jobs if automatic monitoring is desired (optional):"
 echo "   Add entries to /etc/cron.d/network-monitor"
 echo ""
 echo -e "${YELLOW}Example cron file content:${NC}"
-echo '# Run network monitor checks every hour'
-echo "0 * * * * root /bin/bash $SCRIPT_PATH check all > /dev/null 2>&1"
 echo '# Check thresholds every hour'
 echo "15 * * * * root /bin/bash $SCRIPT_PATH check-thresholds > /dev/null 2>&1"
 echo '# Reset counters on the 1st of each month'
